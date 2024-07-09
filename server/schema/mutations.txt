@@ -1,0 +1,56 @@
+mutation RegisterNewUser($username: String!, $password: String!, $bio: String!, $avatar: String!){
+    register(username: $username, password: $password, bio: $bio, avatar: $avatar){
+        id
+        username
+        password
+        bio
+        avatar
+        createdAt
+    }
+}
+
+mutation LoginUser($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+        token
+        user {
+            id
+            username
+            bio
+            avatar
+        }
+    }
+}
+
+mutation CreateNewPost($title: String!, $content: String!) {
+    createNewPost (title: $title, content: $content) {
+        id
+        title
+        content
+        createdAt
+    }
+}
+
+mutation CreateNewComment($postId: ID!, $info: String!) {
+    createNewComment (postId: $postId, info: $info) {
+        id
+        info
+        createdAt
+        author {
+            id
+            username
+            avatar
+        }
+    }
+}
+
+mutation SendFriendRequest($toUserId: ID!, $response: Boolean!) {
+    sendFriendRequest(toUserId: $toUserId, response: $response) {
+
+    }
+}
+
+mutation RespondFriendRequest($toUserId: ID!, $response: Boolean!) {
+    respondToFriendRequest(toUserId: $toUserId, response: $response) {
+
+    }
+}
